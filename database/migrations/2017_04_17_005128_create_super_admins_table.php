@@ -17,7 +17,7 @@ class CreateSuperAdminsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('job_title');
+            $table->string('jobtitle');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

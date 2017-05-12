@@ -147,15 +147,34 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Categories<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">All Categories</a>
+                                <a href="{{route('categories.index')}}">All Categories</a>
                             </li>
 
 
-                            {{--
+                            
                             <li>
-                                <a href="#">Create Category</a>
+                                <a href="{{route('categories.create')}}">Create Category</a>
                             </li>
-                            --}}
+                            
+
+                            
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Sub-Categories<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{{route('subCategory.index')}}">All Sub-Categories</a>
+                            </li>
+
+
+                            
+                            <li>
+                                <a href="{{route('subCategory.create')}}">Create Sub-Category</a>
+                            </li>
+                            
 
                             
                         </ul>
@@ -340,8 +359,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"></h1>
-
                 @yield('content')
             </div>
             <!-- /.col-lg-12 -->

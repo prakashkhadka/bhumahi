@@ -1,11 +1,13 @@
       <!-- JavaScripts -->
-      <script src="js/modernizr.js"></script>
+      <script src="{{asset('js/modernizr.js')}}"></script>
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+       <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+      
       <script>
          
          /* ======= Preloader ======= */
@@ -17,40 +19,42 @@
       </script>
 
 
-      <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
-      <script src="js/jquery.min.js"></script>
+     
       <!-- Bootstrap Core Css  -->
-      <script src="js/bootstrap.min.js"></script>
+      <script src="{{asset('js/bootstrap.min.js')}}"></script>
       <!-- Jquery Easing -->
-      <script src="js/easing.js"></script>
+      <script src="{{asset('js/easing.js')}}"></script>
       <!-- Menu Hover  -->
-      <script src="js/forest-megamenu.js"></script>
+      <script src="{{asset('js/forest-megamenu.js')}}"></script>
       <!-- Jquery Appear Plugin -->
-      <script src="js/jquery.appear.min.js"></script>
+      <script src="{{asset('js/jquery.appear.min.js')}}"></script>
       <!-- Numbers Animation   -->
-      <script src="js/jquery.countTo.js"></script>
+      <script src="{{asset('js/jquery.countTo.js')}}"></script>
       <!-- Jquery Smooth Scroll  -->
-      <script src="js/jquery.smoothscroll.js"></script>
+      <script src="{{asset('js/jquery.smoothscroll.js')}}"></script>
       <!-- Jquery Select Options  -->
-      <script src="js/select2.min.js"></script>
+      <script src="{{asset('js/select2.min.js')}}"></script>
       <!-- noUiSlider -->
-      <script src="js/nouislider.all.min.js"></script>
+      <script src="{{asset('js/nouislider.all.min.js')}}"></script>
       <!-- Carousel Slider  -->
-      <script src="js/carousel.min.js"></script>
-      <script src="js/slide.js"></script>
+      <script src="{{asset('js/carousel.min.js')}}"></script>
+      <script src="{{asset('js/slide.js')}}"></script>
       <!-- Image Loaded  -->
-      <script src="js/imagesloaded.js"></script>
-      <script src="js/isotope.min.js"></script>
+      <script src="{{asset('js/imagesloaded.js')}}"></script>
+      <script src="{{asset('js/isotope.min.js')}}"></script>
       <!-- CheckBoxes  -->
-      <script src="js/icheck.min.js"></script>
+      <script src="{{asset('js/icheck.min.js')}}"></script>
       <!-- Jquery Migration  -->
-      <script src="js/jquery-migrate.min.js"></script>
+      <script src="{{asset('js/jquery-migrate.min.js')}}"></script>
       <!-- Sticky Bar  -->
-      <script src="js/theia-sticky-sidebar.js"></script>
+      <script src="{{asset('js/theia-sticky-sidebar.js')}}"></script>
       <!-- Style Switcher -->
-      <script src="js/color-switcher.js"></script>
+      <script src="{{asset('js/color-switcher.js')}}"></script>
       <!-- Template Core JS -->
-      <script src="js/custom.js"></script>
+      <script src="{{asset('js/custom.js')}}"></script>
+
+      <script src="{{asset('js/nepaliFont.js')}}"></script>
+      
       <script type="text/javascript">
          (function($) {
             "use strict";
@@ -67,3 +71,4 @@
             });
          })(jQuery);
       </script>
+     

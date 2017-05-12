@@ -16,21 +16,35 @@
                   <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
                      <div class="pull-right">
                         <ul class="listnone">
-                           <li><a href="login.html"><i class="fa fa-sign-in"></i> लगइन</a></li>
+                        @if(Auth::guest())
+                           <li><a href="{{route('login')}}"><i class="fa fa-sign-in"></i> लगइन</a></li>
                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> रजिस्टर</a></li>
+                           @else
                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> मेरो बिवरण <span class="caret"></span></a>
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <span class="bigLetter">{{ Auth::user()->name }}</span> <span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                 <li><a href="profile.html">User Profile</a></li>
-                                 <li><a href="profile-2.html">User Profile 2</a></li>
+                                 
+                                 <li><a href="/home">मेरो बिवरण</a></li>
                                  <li><a href="archives.html">Archives</a></li>
                                  <li><a href="active-ads.html">Active Ads</a></li>
                               <li><a href="pending-ads.html">Pending Ads</a></li>
                                  <li><a href="favourite.html">Favourite Ads</a></li>
                                  <li><a href="messages.html">Message Panel</a></li>
                                  <li><a href="deactive.html">Account Deactivation</a></li>
+                                 <li>
+                                    <a href="{{ route('logout') }}"
+                                      onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                                      लग आउट 
+                                    </a>
+
+                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                         {{ csrf_field() }}
+                                     </form>
+                                 </li>
                               </ul>
                            </li>
+                           @endif
                         </ul>
                      </div>
                   </div>

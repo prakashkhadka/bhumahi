@@ -10,7 +10,7 @@
          </div>
          <div class="col-sm-4">
             <aside class="widget text-center">
-               <img alt="Image" src="images/logo-1.png">
+               <img id="bottomLogo" alt="Image" src="{{asset('images/sunwalLogo.png')}}">
                <div class="social-links">
                   <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>

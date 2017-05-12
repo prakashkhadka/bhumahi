@@ -1,9 +1,4 @@
-<style>
-   .bigLetter{
-      font-size:12pt;
-      font-weight:bold;
-   }
-</style>
+
 <nav id="menu-1" class="mega-menu">
                <!-- menu list items container -->
                <section class="menu-list-items">
@@ -13,7 +8,7 @@
                            <!-- menu logo -->
                            <ul class="menu-logo">
                               <li>
-                                 <a href="{{url('/')}}"><img height="80" src="images/sunwalLogo.png" alt="logo"> </a>
+                                 <a href="{{url('/')}}"><img height="80" src="{{asset('images/sunwalLogo.png')}}" alt="logo"> </a>
                               </li>
                            </ul>
                            <!-- menu links -->
@@ -43,7 +38,7 @@
                            </ul>
                            <ul class="menu-search-bar">
                               <li>
-                                 <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> <strong>निशुल्क बिज्ञापन राख्नुहोस</strong></a>
+                                 <a href="{{route('user.post.create')}}" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> <strong>निशुल्क बिज्ञापन राख्नुहोस</strong></a>
                               </li>
                            </ul>
                         </div>

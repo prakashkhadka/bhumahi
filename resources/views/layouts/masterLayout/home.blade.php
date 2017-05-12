@@ -8,8 +8,7 @@
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
       <title>सुनवल नगर</title>
-      
-      @include('layouts.masterLayout.styles')
+      <script src="{{asset('js/jquery.min.js')}}"></script>
       
    </head>
    <body>
@@ -22,6 +21,10 @@
          <div class="loader-section section-right"></div>
       </div>
       -->
+      
+    
+
+      @include('layouts.masterLayout.styles')
 
       @include('layouts.masterLayout.colorSwitcher')
 
@@ -29,17 +32,16 @@
       
       @include('layouts.masterLayout.topNavigation')
    
-      @include('layouts.masterLayout.heroSection')
-
       
-      @yield('categories')
+      @yield('content')
       
       
       @include('layouts.masterLayout.footer')
 
       @include('layouts.masterLayout.sticky')
 
-      @include('layouts.masterLayout.javascripts')
+     @include('layouts.masterLayout.javascripts')
+      
 
    </body>
 </html>
