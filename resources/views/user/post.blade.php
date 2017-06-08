@@ -11,7 +11,7 @@
 
      
       <style>
-        #title-error, #mainCat-error, #subCategories-error, #price-error, #phone-error, #address-error, #consent-error{
+        #title-error, #mainCat-error, #subCategories-error, #price-error, #phone-error, #address-error, #consent-error, #ownermsg-error {
           color:red;
           font-style: none;
           font-size: 10pt;
@@ -76,12 +76,6 @@
                               $('#successModal').modal();
                             });
                           </script>
-                            <p>
-                            <!--
-                              {{Session::get('postSuccess')}}
-                              -->
-                              
-                            </p>
                           @endif
                         </div>
                            <h3 class="main-title text-left">
@@ -177,7 +171,7 @@
                               <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
                                  <label class="control-label">बिवरण <small>आफ्नो विज्ञापनको बारेमा बिस्तृत बिवरण लेख्नुहोस </small></label required>
                                  <p class="text-danger">नेपालीमा टाइप गर्नको लागि नेपाली भाषा छनौट गर्नुहोला </p>
-                                 <textarea name="ownermsg" id="ownermsg" rows="12" class="form-control"></textarea>
+                                 <textarea name="ownermsg" id="ownermsg" rows="12" class="form-control" required></textarea>
                                  
                               </div>
                            </div>
@@ -211,7 +205,7 @@
                                  <label class="control-label">इमेल ठेगाना</label>
                                  <input name"user_email class="form-control" value="{{$userInfo->email}}" type="text" disabled>
                               </div>
-                              <div class="col-sm-12">तपाइको नाम प्रकाशित हुदैन | यदि इमेल ठेगाना परिवर्तन गर्नु परेमा प्रोफाइल बाट परिवर्तन गर्न सक्नुहुन्छा |</div>
+                              <div class="col-sm-12">बिज्ञापन संगै तपाइको नाम र तस्बिर प्रकाशित हुन्छ l यदि परिवर्तन गर्नु परेमा प्रोफाइल बाट परिवर्तन गर्न सक्नुहुन्छ l</div>
                            </div>
                            <!-- end row -->
                            <div class="row">
@@ -233,7 +227,7 @@
                                        <ul class="">
                                           <li>
                                              
-                                             <label id="consentLabel" for="consent">म यसका <a href="#">सर्त तथा अवस्था (Terms and Conditions) </a>  संग सहमत छु र यो प्रकाशित गर्न चाहन्छु</label>
+                                             <label id="consentLabel" for="consent">म यसका <a href="{{route('postTC')}}">सर्त तथा अवस्था (Terms and Conditions) </a>  संग सहमत छु र यो प्रकाशित गर्न चाहन्छु</label>
                                              <input name="consent" value="agree" id="consent"  type="checkbox">
                                           </li>
                                        </ul>
@@ -272,19 +266,22 @@
                      <div class="blog-sidebar">
                         <!-- Categories --> 
                         <div class="widget">
-                           <div class="widget-heading">
-                              <h4 class="panel-title"><a>सुझाबहरु </a></h4>
-                           </div>
                            <div class="widget-content">
-                              <p class="lead"></a> तपाइको बिज्ञापन <a href="#">सुनवलनगर डट कम</a> का प्रयोगकर्ताले सजिलै देख्न सकुन र खोज्न सकुन ! त्यसको लागी कृपया तलका कुराहरु मनन गर्नु होला !</p>
+                              <p class="lead text-info text-center">कृपया तलका कुराहरु मनन गर्नु होला !</p>
                               <ol>
-                                 <li>तपाइको बिज्ञापन अरुले सजिलै खोज्न सकुन भन्नको लागि सहि समूह र उप समुहको छनौट गर्नुहोस | गलत समूह र उपसमुहमा राखेको बिज्ञापन अरुले नहेर्न पनि सक्छन |</li>
-                                 <li>सके सम्म आफ्नो सामान तथा सेवाको तस्बिर समाबेस गर्नुहोस | किनभने एउटा तस्बिरले हजारौ शब्दले गर्न नसकेको बयान गर्न सक्छ |</li>
-                                 <li>तपाईले बढीमा ५ ओटा तस्बिर राख्न सक्नुहुन्छ, महत्वपुर्ण तस्बिर सुरुमै राख्नुहोस |</li>
-                                 <li>एउटै बिज्ञापन एकपटक भन्दा धेरै नराख्नु होला |</li>
-                                 <li>वाटरमार्क भएका र कपिराइट भएका तस्बिरहरु नराख्नुहोला |</li>
-                                 <li> आपत्तिजनक र अस्लिल तस्बिर तथा सामाग्रीहरु नराख्नुहोला | </li>
-                                 <li>चोरी तथा गैरकानुनी सामाग्रीहरु नराख्नुहोला |</li>
+                                 <li>तपाइको बिज्ञापन अरुले सजिलै खोज्न सकुन भन्नको लागि सहि समूह र उप समुहको छनौट गर्नुहोस l गलत समूह र उपसमुहमा राखेको बिज्ञापन अरुले नहेर्न पनि सक्छन l र खोजी गर्दा नभेटिन पनि सक्छ l
+                                 </li>
+                                 <li>सके सम्म आफ्नो सामान तथा सेवाको तस्बिर समाबेस गर्नुहोस l किनभने एउटा तस्बिरले हजारौ शब्दले गर्न नसकेको बयान गर्न सक्छ l</li>
+                                 <li>तपाइले आफुले राखेको बिज्ञापन आफुले चाहेको समयमा सम्पादन (Edit) गर्न सक्नुहुन्छ l  त्यसको लागी प्रोफाइलमा जानुहोस र मेरो बिज्ञापन मा क्लिक गर्नुहोला l</li>
+                                 <li>यदि तपाइको बस्तु अथवा सेवा बिक्री भएमा अथवा यँहा राखीरहन आवश्यक नभएमा आफुले चाहेको समयमा हटाउन सक्नुहुन्छ l पुन: आवश्यक परेमा पुन: प्रकाशित गर्न सक्नुहुन्छ l</li>
+                                 <li>तपाईले बढीमा ५ ओटा तस्बिर राख्न सक्नुहुन्छ, महत्वपुर्ण तस्बिर सुरुमै राख्नुहोस l</li>
+                                 <li>एउटै बिज्ञापन एकपटक भन्दा धेरै नराख्नु होला l</li>
+                                 <li>वाटरमार्क भएका र कपिराइट भएका तस्बिरहरु नराख्नुहोला l</li>
+                                 <li> आपत्तिजनक र अस्लिल तस्बिर तथा सामाग्रीहरु नराख्नुहोला l </li>
+                                 <li>चोरी तथा गैरकानुनी सामाग्रीहरु नराख्नुहोला l</li>
+                                 <li>सुर्तीजन्य तथा मदिराजन्य सामाग्रीको बिज्ञापन नराख्नुहोला l  त्यस्ता सामाग्रीहरु प्रकाशित हुनेछैनन् l</li>
+                                 <li>यदि तपाइलाइ कुनै पनि बिषयमा हामीलाई सोध्नु परेमा <a href="{{route('contactUs')}}">यँहा</a> क्लिक गर्नुहोला l</li>
+                                 <li>सुनवल नगर डट कममा बिज्ञापन राख्नु भएकोमा धन्यबाद !</li>
                               </ol>
                            </div>
                         </div>
@@ -424,6 +421,30 @@
          
       </div>
     </section>
+
+    <section>
+      <div id="maxFileErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                  <h3 class="modal-title" id="successModalTitle">तपाइको फोटोहरु ५ ओटा भन्दा धेरै भयो ?</h3>
+               </div>
+               <div class="modal-body">
+                  <h4>कृपया ५ ओटा फोटोहरु मात्रै राख्नुहोला</h4>
+                  
+                  <div class="clearfix"></div>
+
+
+                  <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                    <button id="closeSuccessModalBtn" href="/" data-dismiss="modal" class="btn btn-theme btn-block">मैले बुझे  </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+    </section>
     
 
 
@@ -449,28 +470,11 @@
 </script>
       <script>
         $(document).ready(function(){
-          /*
-          $val = $("#dropzonePreview").val();
-          
-         
-            $('#submitfiles').on("click", function (e) {
-          tinyMCE.triggerSave(true, true);
-              e.preventDefault();
-              e.stopPropagation();
-              
-          });
-          */
-          
             $("#submitfiles").on("click", function(){
               if($(".myForm").valid()){
                 $('#waitModal').modal('show');
               }
             });
-          
-        
-         
-         
-
           $("#closeSuccessModalBtn").on("click", function(){
               window.location.href = "/";
           });
@@ -484,12 +488,17 @@
                 'pramukhime', 'textcolor', 'advlist', 'lists'
               ],
               image_advtab: false,
-              toolbar: 'pramukhime pramukhimesettings pramukhimeresetsettings pramukhimetogglelanguage pramukhimehelp forecolor backcolor bullist numlist outdent indent',
+              toolbar1: 'pramukhime pramukhimesettings pramukhimeresetsettings pramukhimetogglelanguage pramukhimehelp',
+              toolbar2: 'forecolor backcolor bullist numlist outdent',
 
             }
           
             tinymce.init(editor_config);
-
+            
+            $.validator.setDefaults({
+               ignore: ''
+            });
+            
        
           $("#real-dropzone").removeClass('dropzone');
           $("#dropzone").addClass('dz-clickable');
@@ -497,28 +506,20 @@
           $("#genderDiv").hide();
           $("select[name='subC']").addClass("form-control form-control margin-bottom-20");
           $('#mainCat').on('change', function() {
-           
-            //$("select[name='subC']").not("select[name='subC'] option[value=' ']").empty();
             $("#subCategories").find('option').not(':first').remove();
             var catId = this.value;
-            //alert(catId);
             var url = "getSubCat";
             $.get(url + '/' + catId, function(data){
-              //console.log(data['hasG']);
-              var hasGender = data['hasG'];   //this has gender has 0 or 1 value which is used to show a input 
-              //$('#genderDiv').show(hasGender == 1);
+              var hasGender = data['hasG'];   
               if(hasGender == 1){
                 $('#genderDiv').show(500);
               }
               else{
                 $('#genderDiv').hide(500);
               }
-              //console.log(hasGender);
-              var data = data['subC']; // data for subcategory received from ajax call to server
+              var data = data['subC'];
               console.log(data);
-              //$('#subCategories').val(data);
               for(i = 0; i < data.length; i ++) {
-
                 $("select[name='subcategory_id']").append("<option value='"+data[i]["id"]+"'>"+data[i]["title"]+"</option>");
 
               }
@@ -569,7 +570,7 @@
               subcategory_id : "कृपया एउटा उप-समूह (Sub -category ) छनौट गर्नुहोस ",
               price: "मूल्य राख्नुहोस",
               
-              ownerMsg:{
+              ownermsg:{
                 required: "कृपया बिवरण लेख्नुहोस ",
                 minlength: "कृपया २० अक्षर भन्दा धेरै लेख्नुहोस ",
                 maxlength: "बिवरण धेरै भयो | १५००० अक्षर भन्दा कम लेख्नुहोस |"
@@ -592,13 +593,9 @@
 
         });
       </script>
-
-
-    
       <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
       <script src="{{asset('dropzone/dropzone-config-3.js')}}"></script>
       <script src="{{asset('js/imageCompressor.js')}}"></script>
      
-      <!-- JS -->
    
 @endsection

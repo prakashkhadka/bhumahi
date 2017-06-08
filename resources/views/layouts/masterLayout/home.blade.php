@@ -2,9 +2,6 @@
 <html lang="en">
    <head>
       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-      <!--[if IE]>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
       <title>सुनवल नगर</title>
@@ -12,7 +9,7 @@
       
    </head>
    <body>
-
+      <div class="colored-header">
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <!--
       <div id="loader-wrapper">
@@ -41,7 +38,7 @@
       @include('layouts.masterLayout.sticky')
 
      @include('layouts.masterLayout.javascripts')
-      
+      </div>
 
    </body>
 </html>

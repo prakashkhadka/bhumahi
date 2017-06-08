@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.allAdminLoginLandingLayout.allAdminLoginLayout')
 
 @section('content')
 <div class="container">
@@ -65,4 +65,21 @@
         </div>
     </div>
 </div>
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <p class="text-warning text-center">
+                    यदि तपाइँ सुनवल नगर डट कम को एडमिन होइन भने तपाइले यहा लग इन को प्रायस नगर्नुहोला 
+                </p> 
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

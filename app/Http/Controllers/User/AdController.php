@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Adviewcounter;
 use App\Adimage;
 use App\Ad;
 use App\Subcategory;
@@ -98,6 +99,8 @@ class AdController extends Controller
        //$input['consent'] = "agree";
        
        $adv = Ad::create($input);
+       $adCounter['ad_id'] = $adv->id;
+       Adviewcounter::create($adCounter);
         
         if($request->hasFile('file')){
             $files = $request->file('file');
@@ -131,9 +134,109 @@ class AdController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($adID, $userID)
+    {   
         //
+    }
+
+    public function editMyAd($adID, $userID)
+    {   
+        $uID = Auth::user()->id;
+        if($uID == $userID){
+            $ad = Ad::findOrFail($adID);
+
+            $categories = Category::pluck('title', 'id', 'hasgender')->all();
+            $userInfo = Auth::user();
+            $subCatID = $ad->subcategory_id;
+            //$subCategory = Subcategory::findOrFail($subCatID)->pluck('title', 'id')->all();
+            $subCategory = Subcategory::where('category_id', $ad->category_id)->pluck('title', 'id')->all();
+            //$subCategory = Subcategory::where('id', $subCatID)->pluck('title', 'id')->all();
+            return view('user/editMyAd', compact('ad', 'userInfo', 'categories', 'subCategory'));
+        }
+        else{
+            return view('unauthorised');
+        }
+        
+        //return $ad = Ad::findOrFail($id);
+        //return view('user.editMyAd');
+    }
+
+    public function updateMyAd(Request $request, $id, $userID)
+    {
+        //return $id . "user Id is : </br>" . $userID. "Content is :  </br>". $request->all();
+        //return $request->all();
+        $uID = Auth::user()->id;
+        if($uID == $userID){
+            
+            $this->validate($request, [
+            
+            'title'=>'required|min:5|max:150',
+            'category_id'=>'required',
+            'subcategory_id'=>'required',
+            'ownermsg'=>'required',
+            'price'=>'required',
+            'condition'=>'required',
+            'phone'=>'required',
+            'address'=>'required',
+            'consent'=>'required'
+            ]); 
+            
+       $input['user_id'] = Auth::user()->id;
+
+       $input['title'] = $request->title;
+       //$input['title'] = "New Title";
+
+       $input['category_id'] = $request->category_id;
+       //$input['category_id'] = 5;
+
+       $input['subcategory_id'] = $request->subcategory_id;
+       //$input['subcategory_id'] = 5;
+
+       $input['gender_id'] = $request->gender_id;
+       //$input['gender_id'] = 3;
+       
+       $input['price'] = $request->price;
+       //$input['price'] = 200;
+
+       $input['ownermsg'] = $request->ownermsg;
+       //$input['ownermsg'] = "Hello World";
+
+       $input['condition']= $request->condition;
+       //$input['condition']= "new";
+
+       $input['phone']= $request->phone;
+       //$input['phone']= 45496;
+
+       $input['address'] = $request->address;
+       //$input['address'] = "Sunwal -12, Bhumahi, Nawalparasi";
+
+       $input['consent'] = $request->consent;
+       //$input['consent'] = "agree";
+       
+       //$adv = Ad::update($input);
+       Ad::where('id', $id)->update($input);
+        
+        if($request->hasFile('file')){
+            $files = $request->file('file');
+            $ad['ad_id'] = $id;
+            foreach($files as $file){
+                $photoName = time() . $file->getClientOriginalName();
+                $ad['file'] = $photoName;
+                $file->move('productImages', $photoName);
+                Adimage::create($ad);
+            }
+        }
+
+        Session::flash('updatePostSuccess', 'message');
+        //return redirect('user/post/create');
+        return back();
+    }
+
+
+        
+        else{
+            return view('unauthorised');
+        }
     }
 
     /**
@@ -145,7 +248,7 @@ class AdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //return $id;
     }
 
     /**
@@ -165,12 +268,20 @@ class AdController extends Controller
         $data['hasG'] = $cat->hasgender;
         $data['subC'] = $cat->categories()->whereCategoryId($id)->get();
 
-        return $data;
-
-
-
-        
-
-        
+        return $data;   
     }
+
+    public function getSubCatEdit($id, $uID){
+
+        $cat = Category::findOrFail($uID);
+        //return $subC = $cat->categories()->whereCategoryId($id)->get();
+
+        $data['hasG'] = $cat->hasgender;
+        $data['subC'] = $cat->categories()->whereCategoryId($uID)->get();
+        //$data['initialSubC'] = $cat->categories()->all();
+
+        return $data;   
+    }
+
+
 }

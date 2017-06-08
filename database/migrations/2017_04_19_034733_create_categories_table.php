@@ -23,6 +23,7 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->string('categoryImg');
             $table->integer('hasgender')->default(0);
+            
             $table->timestamps();
         });
     }

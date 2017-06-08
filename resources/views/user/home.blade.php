@@ -9,7 +9,13 @@
  
 
 <section class="master-container">
-
+<style>
+  .welcomeUser{
+    font-size:14pt;
+    font-weight:bold;
+    color:orange;
+  }
+</style>
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
@@ -22,11 +28,6 @@
                   <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                      <!-- Sidebar Widgets -->
                      <div class="user-profile">
-
-                        <!--
-                        <img src="{{URL::asset($userInfo->userphoto ? "userPhoto/{$userInfo->userphoto}" : "images/users/9.jpg")}}" alt="User Photo">
-                        -->
-                        
                          <img src="{{$userInfo->file ? URL::asset("userPhoto/{$userInfo->file}") : "images/users/9.jpg"}}" alt="User Photo">
                         
                         <div class="profile-detail">
@@ -45,15 +46,20 @@
                         </div>
                         <ul>
                            <li  class="active"><a href="/home">मेरो प्रोफाइल</a></li>
-                           <li ><a href="active-ads.html">मेरो बिज्ञापन <span class="badge">45</span></a></li>
-                           <li><a href="favourite.html">धेरैले रुचाएको बिज्ञापन <span class="badge">15</span></a></li>
-                           <li><a href="archives.html">पुराना सामाग्री (Archieves)</a></li>
-                           <li ><a href="messages.html">मेसेज (message )</a></li>
+                           <li ><a href="{{route('myAds')}}">मेरो बिज्ञापन / सामाग्री<span class="badge">{{$adNumber}}</span></a></li>
+                           <li><a href="{{route('myAdSinglePage', [$maxViewedAd->category_id, $maxViewedAd->slug])}}">धेरैले रुचाएको बिज्ञापन <span class="badge">{{number_format($maxViewCount/2,0)}}</span></a></li>
+                           <li><a href="{{route('removedAds', Auth::user()->id)}}">हटाएको सामाग्री (Archieves)<span class="badge">{{$rmAd}}</span></a></li>
+                           <li ><a href="{{route('myMessage')}}">मेसेज (message)<span class="badge">{{$myMessageNumber}}</span></a>
                         </ul>
                      </div>
                      
                   </div>
                   <div class="col-md-8 col-sm-12 col-xs-12">
+                  <div class="bg-success text-center">
+                      @if(Session::has('registerSuccess'))
+                          स्वागत छ <span class="welcomeUser"> {{Auth::user()->name}}</span> जी {{Session::get('registerSuccess')}}
+                      @endif
+                  </div>
                      <!-- Row -->
                      <div class="profile-section margin-bottom-20">
                         <div class="profile-tabs">

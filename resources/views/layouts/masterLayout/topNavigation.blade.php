@@ -18,7 +18,7 @@
                                  <a href="{{url('/')}}"> <span class="bigLetter">गृह पृष्‍ठ </span></a>
                               </li>
                               
-                              @include('layouts.masterLayout.navigationMenus.style')
+                              
 
                               @include('layouts.masterLayout.navigationMenus.fashion')
                               
@@ -29,11 +29,11 @@
                               @include('layouts.masterLayout.navigationMenus.realestate')
 
                               @include('layouts.masterLayout.navigationMenus.vehicle')
-
+                              
                               @include('layouts.masterLayout.navigationMenus.shops')
                               
                               
-                              <li><a href="contact.html"><span class="bigLetter">संपर्क</span> </a></li>
+                              <li><a href="{{route('contactUs')}}"><span class="bigLetter">संपर्क</span> </a></li>
 
                            </ul>
                            <ul class="menu-search-bar">

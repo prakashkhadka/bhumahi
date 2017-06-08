@@ -20,7 +20,7 @@ class CreateSubcategoriesTable extends Migration
             $table->integer('category_id')->index()->unsigned();
             $table->string('subCatImg');
             $table->timestamps();
-
+            
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }

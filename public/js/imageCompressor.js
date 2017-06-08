@@ -10,8 +10,8 @@
 
            //======resizes images ====================//
            dropzone.on("addedfile", function(origFile) {
-              var MAX_WIDTH  = 300;
-              var MAX_HEIGHT = 250;
+              var MAX_WIDTH  = 400;
+              var MAX_HEIGHT = 500;
 
               var reader = new FileReader();
 

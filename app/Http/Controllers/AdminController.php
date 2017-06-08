@@ -15,6 +15,7 @@ class AdminController extends Controller
     {
         $this->middleware('auth:admin'); // This uses admin guard instead of default web guard
     }
+    
 
     /**
      * Show the application dashboard.
@@ -23,6 +24,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        //return view('admin.dashboard');
+        return view('admin.dashboard');
     }
 }

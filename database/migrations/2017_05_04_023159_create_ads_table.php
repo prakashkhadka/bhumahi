@@ -18,6 +18,7 @@ class CreateAdsTable extends Migration
             $table->string('title');
             $table->integer('category_id')->unsigned()->index();
             $table->integer('subcategory_id')->unsigned()->index();
+            $table->string('brand')->nullable();
             $table->integer('gender_id')->unsigned();
             $table->integer('price')->unsigned()->nullable();
             $table->char('ownermsg');
@@ -34,6 +35,7 @@ class CreateAdsTable extends Migration
             $table->integer('suspendedbyuser')->default(0);
             $table->integer('sold')->default(0);
             $table->string('slug');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

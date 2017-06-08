@@ -40,7 +40,7 @@ Designed and Development by: ScriptsBundle
     /* ======= Preloader ======= */
     setTimeout(function() {
         $('body').addClass('loaded');
-    }, 3000);
+    }, 300);
 
     /* ======= Counter FunFacts ======= */
     var timer = $('.timer');
